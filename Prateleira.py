@@ -38,7 +38,25 @@ class Prateleira():
         for livro in self.livros:
             if preco_min <= livro.preco <= preco_max:
                 Flivros.append(livro)
+        return Flivros    
+    
+    def filtrar_livros(self, autor=None, ano=None, preco_min=None, preco_max=None):
+        Flivros = []
+        for livro in self.livros:
+
+            match_autor = (autor is None or livro.autor == autor)
+            match_ano = (ano is None or livro.ano == ano)
+            match_preco = True
+            if preco_min is not None and livro.preco < preco_min:
+                match_preco = False
+            if preco_max is not None and livro.preco > preco_max:
+                match_preco = False
+            
+            if match_autor and match_ano and match_preco:
+                Flivros.append(livro)
+                
         return Flivros
+
 
     
     

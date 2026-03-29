@@ -38,6 +38,21 @@ def test_lista_livros_filtrada():
     assert len(livros_fPreco) == 2
     assert all(l.preco >= 30 and l.preco <= 50 for l in livros_fPreco)
 
+def teste_lista_livros_Completo():
+    prateleira = Prateleira.Prateleira()
+    livro1 = Livros.Livros("O Senhor dos Anéis", "J.R.R. Tolkien", 1954, 50.00)
+    livro2 = Livros.Livros("O Hobbit", "J.R.R. Tolkien", 1937, 30.00)
+    livro3 = Livros.Livros("Dom Casmurro", "Machado de Assis", 1899, 20.00)
+
+    prateleira.__AddLivro__(livro1)
+    prateleira.__AddLivro__(livro2)
+    prateleira.__AddLivro__(livro3)
+
+    livros_filtrados = prateleira.filtrar_livros("J.R.R. Tolkien", 1954, 30, 60)
+
+    assert len(livros_filtrados) == 1
+    assert livros_filtrados[0].titulo == "O Senhor dos Anéis"
+
 if __name__ == "__main__":  
     # Executa os testes utilizando o pytest
     pytest.main([__file__])
