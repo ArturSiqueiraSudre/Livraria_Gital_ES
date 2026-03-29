@@ -22,11 +22,17 @@ def test_lista_livros_filtrada():
     prateleira.__AddLivro__(livro3)
 
     # Filtra livros do autor J.R.R. Tolkien
-    livros_filtrados = prateleira.get_livros_por_autor("J.R.R. Tolkien")
-    
-    assert len(livros_filtrados) == 2
-    assert all(l.autor == "J.R.R. Tolkien" for l in livros_filtrados)
+    livros_fAutor = prateleira.get_livros_por_autor("J.R.R. Tolkien")
 
-if __name__ == "__main__":
+    # Filtra livros do 1954
+    livros_fAnos = prateleira.get_livros_por_ano(1954)
+    
+    assert len(livros_fAutor) == 2
+    assert all(l.autor == "J.R.R. Tolkien" for l in livros_fAutor)
+
+    assert len(livros_fAnos) == 1
+    assert all(l.ano == 1954 for l in livros_fAnos)
+
+if __name__ == "__main__":  
     # Executa os testes utilizando o pytest
     pytest.main([__file__])

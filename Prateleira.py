@@ -20,11 +20,22 @@ class Prateleira():
             print("Erro encontrado ao consultar livro: ", e)
 
     def get_livros_por_autor(self, autor):
+        Flivros = []
         for livro in self.livros: 
             if livro.autor == autor:
-                return livro
-        return None
+                Flivros.append(livro)
+        return Flivros
 
+    def get_livros_por_ano(self, ano):
+        Flivros = []
+        for livro in self.livros: 
+            if livro.ano == ano:
+                Flivros.append(livro)
+        return Flivros
+    
+
+
+    
     
 
         
