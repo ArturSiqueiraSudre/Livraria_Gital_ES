@@ -27,11 +27,16 @@ def test_lista_livros_filtrada():
     # Filtra livros do 1954
     livros_fAnos = prateleira.get_livros_por_ano(1954)
     
+    livros_fPreco = prateleira.get_livros_RangePreco(30, 50)
+    
     assert len(livros_fAutor) == 2
     assert all(l.autor == "J.R.R. Tolkien" for l in livros_fAutor)
 
     assert len(livros_fAnos) == 1
     assert all(l.ano == 1954 for l in livros_fAnos)
+
+    assert len(livros_fPreco) == 2
+    assert all(l.preco >= 30 and l.preco <= 50 for l in livros_fPreco)
 
 if __name__ == "__main__":  
     # Executa os testes utilizando o pytest

@@ -33,7 +33,12 @@ class Prateleira():
                 Flivros.append(livro)
         return Flivros
     
-
+    def get_livros_RangePreco(self, preco_min, preco_max):
+        Flivros = []        
+        for livro in self.livros:
+            if preco_min <= livro.preco <= preco_max:
+                Flivros.append(livro)
+        return Flivros
 
     
     
